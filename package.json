@@ -15,12 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hexlet-components/projects-frontend-l4-server.git"
+    "url": "git@github.com:OverNovik/frontend-project-lvl4.git"
   },
-  "author": "Kirill Mokevnin",
+  "author": "OverNovik",
   "license": "ISC",
   "homepage": "",
   "dependencies": {
+    "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "core-js": "^3.21.1",
     "debug": "^4.3.3",
@@ -32,6 +33,7 @@
     "fastify-sensible": "^3.1.2",
     "fastify-socket.io": "^3.0.0",
     "fastify-static": "^4.5.0",
+    "formik": "^2.2.9",
     "http-errors": "^2.0.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
@@ -40,7 +42,10 @@
     "popper.js": "^1.16.1",
     "pug": "^3.0.2",
     "react": "^17.0.2",
-    "regenerator-runtime": "^0.13.9"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.3.0",
+    "regenerator-runtime": "^0.13.9",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
