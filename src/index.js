@@ -12,8 +12,6 @@ if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
 
-const applicationRender = () => {
-  ReactDOM.render(<App />, document.querySelector('#chat'));
-}
 
-applicationRender();
+ReactDOM.render(<App />, document.querySelector('#chat'));
+

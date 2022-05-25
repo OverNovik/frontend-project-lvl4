@@ -1,2 +1,2 @@
-web: make start-backend
-frontend: make start-frontend
+web: npm start --watch --verbose-watch
+frontend: npx webpack serve
