@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import loginImage from './../../../../assets/loginImage.jpg';
 import useAuth from '../../../../hooks/index.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const auth = useAuth();
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
+
   const Schema = Yup.object().shape({
     username: Yup.string()
     .min(2, 'Must be longer than 2 characters')
@@ -15,7 +19,7 @@ const LoginForm = () => {
     password: Yup.string()
       .min(2, 'Too Short password!')
       .max(50, 'Too Long password!')
-      .required('Required')
+      .required('Required'),
   })
 
   const formik = useFormik({
@@ -25,10 +29,15 @@ const LoginForm = () => {
     },
     validationSchema: Schema,
     onSubmit: async (values) => {
-      // console.log(JSON.stringify(values, null, 2));
-      const res = await axios.post('api/v1/login', values)
-      console.log(res.data)
-      auth.logIn(res.data.token);
+      try {
+        const res = await axios.post('api/v1/login', values)
+        console.log(res.data)
+        auth.logIn(res.data.token);
+        navigate('/');
+      } catch (e) {
+        e.message = 'Invalid username or password';
+        setErrorMessage(e.message);
+      }
     }
   })
 
@@ -67,6 +76,7 @@ const LoginForm = () => {
             />
           <label className="form-label" htmlFor="password">Пароль</label>
           {formik.errors.password ? <div className="invalid-tooltip" style={{display: 'block'}}>{formik.errors.password}</div> : null}
+          {errorMessage ? <div className="invalid-tooltip" style={{display: 'block'}}>{errorMessage}</div> : null}
         </div>
         <button type="submit" className="w-100 mb-3 btn btn-outline-primary">Войти</button>
       </form>
