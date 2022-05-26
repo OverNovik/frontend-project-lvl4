@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AuthContext from "../contexts/index.jsx";
-import localStorageService from "../services/localStorageService.jsx";
+import localStorageService from "../services/localStorageService.js";
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
 
   if (loggedIn !== !!token) {
     setLoggedIn(!!token);
-  } 
+  }
 
   const logIn = (token) => {
     localStorageService.setToken(token);
@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
     localStorageService.removeToken()
     setLoggedIn(false);
   };
-  
+
   return (
     <AuthContext.Provider value={{ loggedIn, logIn, logOut }}>
       {children}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login.jsx';
-import Main from './components/Main/Main.jsx';
+import Chat from './components/Chat/Chat.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import NotFound from './components/NotFound404/NotFound.jsx';
 import AuthProvider from './provider/authProvider.jsx';
@@ -14,7 +14,7 @@ const App = () => {
         <Navbar />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<PrivateRoute><Main /></PrivateRoute>} />
+            <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
             <Route path="/login" exact element={<Login />} />
             <Route path="/NotFound" element={<NotFound />} />
           </Routes>
