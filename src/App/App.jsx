@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login.jsx';
 import Chat from './components/Chat/Chat.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
-import NotFound from './components/NotFound404/NotFound.jsx';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage.jsx';
 import AuthProvider from './provider/authProvider.jsx';
 import PrivateRoute from './routes/privateRoute.jsx';
 
@@ -16,7 +16,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
             <Route path="/login" exact element={<Login />} />
-            <Route path="/NotFound" element={<NotFound />} />
+            <Route path="/NotFound" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </div>
