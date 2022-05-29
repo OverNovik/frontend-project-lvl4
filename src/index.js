@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'regenerator-runtime/runtime.js';
-import store from './App/redux/slices/index.js';
+import store from './App/slices/index.js';
 import '../assets/application.scss';
 import App from './App/App.jsx';
 

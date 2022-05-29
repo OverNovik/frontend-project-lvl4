@@ -10,7 +10,7 @@ const ChatFieldForm = () => {
             aria-label="Новое сообщение"
             placeholder="Введите сообщение..."
             className="border-0 p-0 ps-2 form-control"
-            value=""
+          // value=""
           />
           <button type="submit" disabled="" className="btn btn-group-vertical">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20" fill="currentColor">

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const chatSlices = createSlice({
   name: 'Chat',
-  initialState: [],
+  initialState: {},
   reducers: {
     temporary: (state, action) => {
       state = action.payload;
