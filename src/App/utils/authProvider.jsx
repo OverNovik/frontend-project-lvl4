@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AuthContext from "../contexts/index.jsx";
-import localStorageService from "../services/localStorageService.js";
+import AuthContext from "./contexts/authContext.js";
+import localStorageService from "./localStorageService.js";
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);

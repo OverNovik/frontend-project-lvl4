@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { batch, useDispatch } from 'react-redux';
-import useAuth from '../../hooks/index.jsx';
-import localStorageService from '../../services/localStorageService.js';
-import { temporary } from '../../slices/chatSlices.js';
+import localStorageService from '../../utils/localStorageService.js';
+import { getChannels } from '../../slices/chatSlices.js';
 import Channels from './components/Channels/Channels.jsx';
 import ChatField from './components/СhatField/ChatField.jsx';
 
@@ -22,9 +21,7 @@ const Chat = () => {
       const { channels, currentChannelId, messages } = res.data
       console.log(res.data)
       batch(() => {
-        console.log(dispatch(temporary(messages)))
-        console.log(dispatch(temporary(currentChannelId)))
-        console.log(dispatch(temporary(channels)))
+        dispatch(getChannels(channels))
       })
     };
 

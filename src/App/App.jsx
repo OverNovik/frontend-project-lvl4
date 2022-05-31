@@ -4,8 +4,8 @@ import Login from './components/Login/Login.jsx';
 import Chat from './components/Chat/Chat.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.jsx';
-import AuthProvider from './provider/authProvider.jsx';
-import PrivateRoute from './routes/privateRoute.jsx';
+import AuthProvider from './utils/authProvider.jsx';
+import PrivateRoute from './utils/PrivateRoute.jsx';
 
 const App = () => {
   return (

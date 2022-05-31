@@ -3,6 +3,6 @@ import chatReducer from "./chatSlices.js";
 
 export default configureStore({
   reducer: {
-    temporary: chatReducer,
+    chat: chatReducer,
   }
 })

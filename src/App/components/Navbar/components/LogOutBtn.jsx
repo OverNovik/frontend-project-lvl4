@@ -1,5 +1,5 @@
 import React from 'react';
-import useAuth from '../../../hooks/index.jsx';
+import useAuth from '../../../utils/hooks/useAuth.jsx';
 
 const LogOutBtn = () => {
   const auth = useAuth();
