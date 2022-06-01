@@ -1,19 +1,15 @@
-class LocalStorageService {
-  tokenTitle = 'userToken';
+const USER_TOKEN = 'USER_TOKEN';
 
-  setToken(token) {
-    localStorage.setItem(this.tokenTitle, token)
-  }
-
-  getToken() {
-    return localStorage.getItem(this.tokenTitle);
-  }
-
-  removeToken() {
-    localStorage.removeItem(this.tokenTitle);
-  }
+const setToken = (token) => {
+  localStorage.setItem(USER_TOKEN, token)
 }
 
-const localStorageService = new LocalStorageService();
+const getToken = () => {
+  return localStorage.getItem(USER_TOKEN);
+}
 
-export default localStorageService;
+const removeToken = () => {
+  localStorage.removeItem(USER_TOKEN);
+}
+
+export default { setToken, getToken, removeToken };

@@ -1,10 +1,12 @@
 import React from "react";
 
-const ChatFieldMessage = () => {
+const ChatFieldMessage = ({ message }) => {
   return (
     <div className="text-break mb-2">
-      <b>абоба</b>
-      : привет
+      <b>{message.username}</b>
+      :
+      {' '}
+      {message.text}
     </div>
   )
 }

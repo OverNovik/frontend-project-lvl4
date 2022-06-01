@@ -31,8 +31,8 @@ const LoginForm = () => {
     onSubmit: async (values) => {
       try {
         const res = await axios.post('api/v1/login', values)
-        console.log(res.data)
-        auth.logIn(res.data.token);
+        // console.log(res.data)
+        auth.logIn(JSON.stringify(res.data));
         navigate('/');
       } catch (e) {
         e.message = 'Invalid username or password';

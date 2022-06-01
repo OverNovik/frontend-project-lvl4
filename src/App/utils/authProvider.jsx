@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AuthContext from "./contexts/authContext.js";
 import localStorageService from "./localStorageService.js";
 
@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ loggedIn, logIn, logOut }}>
+    <AuthContext.Provider value={{ loggedIn, logIn, logOut, token }}>
       {children}
     </AuthContext.Provider>
   );

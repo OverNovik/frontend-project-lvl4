@@ -1,12 +1,19 @@
 import React from "react";
-import socketio from "socket.io";
+import io from "socket.io-client";
 import SocketContext from "./contexts/socketContext.js";
+import { useDispatch } from "react-redux";
+import { addMessage } from '../slices/chatSlices.js';
 
 const SocketProvider = ({ children }) => {
-  const socket = socketio();
+  const socket = io();
+  const dispatch = useDispatch();
+
+  socket.on("addMessage", (message) => {
+    dispatch(addMessage(message))
+  });
 
   return (
-    <SocketContext.Provider value={socket}>
+    <SocketContext.Provider value={{ socket }}>
       {children}
     </SocketContext.Provider>
   )

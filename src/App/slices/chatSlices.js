@@ -6,15 +6,18 @@ const chatSlices = createSlice({
   reducers: {
     getChannels: (state, { payload: channels }) => {
       state.channels = channels;
-      console.log(state.channels)
+      console.log(state)
     },
-    getCurrentChannelId: (state, { payload: currentChannelId }) => {
+    setCurrentChannelId: (state, { payload: currentChannelId }) => {
       state.currentChannelId = currentChannelId;
     },
     getMessages: (state, { payload: messages }) => {
       state.messages = messages;
+    },
+    addMessage: (state, { payload: messages }) => {
+      state.messages.push(messages);
     }
   }
 })
-export const { getChannels, getCurrentChannelId, getMessages } = chatSlices.actions;
+export const { getChannels, setCurrentChannelId, getMessages, addMessage } = chatSlices.actions;
 export default chatSlices.reducer;

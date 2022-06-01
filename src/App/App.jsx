@@ -6,21 +6,24 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage.jsx';
 import AuthProvider from './utils/authProvider.jsx';
 import PrivateRoute from './utils/PrivateRoute.jsx';
+import SocketProvider from './utils/socketProvider.jsx';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <div className="d-flex flex-column h-100">
-        <Navbar />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
-            <Route path="/login" exact element={<Login />} />
-            <Route path="/NotFound" element={<NotFoundPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </AuthProvider>
+    <SocketProvider>
+      <AuthProvider>
+        <div className="d-flex flex-column h-100">
+          <Navbar />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
+              <Route path="/login" exact element={<Login />} />
+              <Route path="/NotFound" element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </AuthProvider>
+    </SocketProvider>
   );
 }
 

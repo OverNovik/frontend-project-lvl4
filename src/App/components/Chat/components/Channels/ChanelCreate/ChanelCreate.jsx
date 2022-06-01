@@ -1,6 +1,7 @@
 import React from "react";
 
 const ChanelCreate = () => {
+
   return (
     <div className="d-flex justify-content-between mb-2 ps-4 pe-2">
       <span>Каналы</span>
