@@ -7,6 +7,7 @@ import NotFoundPage from './components/NotFoundPage/NotFoundPage.jsx';
 import AuthProvider from './utils/authProvider.jsx';
 import PrivateRoute from './utils/PrivateRoute.jsx';
 import SocketProvider from './utils/socketProvider.jsx';
+import Modal from './components/Modal/Modal.jsx';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="/NotFound" element={<NotFoundPage />} />
             </Routes>
           </BrowserRouter>
+          <Modal />
         </div>
       </AuthProvider>
     </SocketProvider>

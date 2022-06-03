@@ -6,7 +6,7 @@ import localStorageService from "../../../../../utils/localStorageService.js";
 
 const ChatFieldForm = () => {
   const { socket } = useSocket();
-  const channelId = useSelector((state) => state.chat.currentChannelId);
+  const channelId = useSelector((state) => state.channels.currentChannelId);
   const token = JSON.parse(localStorageService.getToken());
   const focusEl = useRef();
 

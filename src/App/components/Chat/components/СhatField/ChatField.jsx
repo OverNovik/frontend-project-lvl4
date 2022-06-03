@@ -5,8 +5,8 @@ import ChatFieldHeader from "./ChatFieldHeader/ChatFieldHeader.jsx";
 import ChatFieldMessage from "./ChatFieldMessage/ChatFieldMessage.jsx";
 
 const ChatField = () => {
-  const channelId = useSelector((state) => state.chat.currentChannelId);
-  const messages = useSelector((state) => state.chat.messages);
+  const channelId = useSelector((state) => state.channels.currentChannelId);
+  const messages = useSelector((state) => state.messages.messages);
 
   // let currMessages;
   // if (messages) {

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { batch, useDispatch } from 'react-redux';
-import { getChannels, setCurrentChannelId, getMessages } from '../../slices/chatSlices.js';
+import { getChannels, setCurrentChannelId } from '../../slices/channelsSlices.js';
 import Channels from './components/Channels/Channels.jsx';
 import ChatField from './components/СhatField/ChatField.jsx';
 import useAuth from '../../utils/hooks/useAuth.jsx';
+import { getMessages } from '../../slices/messagesSlices.js';
 
 const Chat = () => {
   const auth = useAuth();

@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import chatReducer from "./chatSlices.js";
+import modalReducer from "./modalSlices.js";
+import channelsReducer from "./channelsSlices.js";
+import messagesReducer from "./messagesSlices.js";
 
 export default configureStore({
   reducer: {
-    chat: chatReducer,
+    modal: modalReducer,
+    channels: channelsReducer,
+    messages: messagesReducer
   }
 })
