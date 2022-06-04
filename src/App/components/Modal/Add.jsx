@@ -2,7 +2,7 @@ import React from "react";
 import ModalForm from "./components/ModalForm.jsx";
 import ModalHeader from "./components/ModalHeader.jsx";
 
-const Modal = () => {
+const Add = () => {
   return (
     <div role="dialog" aria-modal="true" className="fade modal show" tabIndex="-1" style={{ display: "block", background: "gray", opacity: "0.7" }}>
       <div className="modal-dialog modal-dialog-centered">
@@ -17,4 +17,4 @@ const Modal = () => {
   )
 }
 
-export default Modal;
+export default Add;

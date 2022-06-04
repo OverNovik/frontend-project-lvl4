@@ -7,7 +7,7 @@ import NotFoundPage from './components/NotFoundPage/NotFoundPage.jsx';
 import AuthProvider from './utils/authProvider.jsx';
 import PrivateRoute from './utils/PrivateRoute.jsx';
 import SocketProvider from './utils/socketProvider.jsx';
-import Modal from './components/Modal/Modal.jsx';
+import Modal from './components/Modal/Add.jsx';
 
 const App = () => {
   return (
