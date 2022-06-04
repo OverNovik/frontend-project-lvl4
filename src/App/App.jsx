@@ -22,7 +22,7 @@ const App = () => {
               <Route path="/NotFound" element={<NotFoundPage />} />
             </Routes>
           </BrowserRouter>
-          <Modal />
+          {/* <Modal /> */}
         </div>
       </AuthProvider>
     </SocketProvider>
