@@ -19,8 +19,8 @@ const App = () => {
     <SocketProvider>
       <AuthProvider>
         <div className="d-flex flex-column h-100">
-          <Navbar />
           <BrowserRouter>
+            <Navbar />
             <Routes>
               <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
               <Route path="/login" exact element={<Login />} />
