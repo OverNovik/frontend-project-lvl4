@@ -2,21 +2,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import React, { useEffect, useRef } from "react";
 import { Button, FormControl, FormGroup } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useSocket from "../../../utils/hooks/useSocket.jsx";
+import { isUnique } from "../../../utils/isUnique.js";
 
 const ModalForm = ({ onHide }) => {
   const { socket } = useSocket();
   const inputEl = useRef();
-  const dispatch = useDispatch();
   const channels = useSelector((state) => state.channels.channels);
   const channelsName = channels.map((item) => item.name);
-  console.log(channelsName);
-
-  const isUnique = (channels, name) => {
-    const same = channels.find((item) => item === name);
-    return !same;
-  };
 
   const Schema = Yup.object().shape({
     name: Yup.string()

@@ -26,7 +26,7 @@ const ChanelItem = ({ name, removable, id }) => {
 
   return (
     <>
-      <li className="nav-item w-100">
+      <li className="nav-item w-100" key={id}>
         {!removable ? (
           <button
             type="button"

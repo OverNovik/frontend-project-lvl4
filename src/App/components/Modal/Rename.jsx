@@ -1,30 +1,64 @@
 import React, { useRef, useEffect } from "react";
+import * as Yup from "yup";
 import { Modal, Button, FormControl, FormGroup } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import ModalHeader from "./components/ModalHeader.jsx";
+import { useFormik } from "formik";
+import useSocket from "../../utils/hooks/useSocket.jsx";
+import { isUnique } from "../../utils/isUnique.js";
 
 const Rename = ({ onHide }) => {
+  const { socket } = useSocket();
   const inputEl = useRef();
+  const channels = useSelector((state) => state.channels.channels);
+  const channelsName = channels.map((item) => item.name);
+  const { id, name } = useSelector((state) => state.modal.item)
 
   useEffect(() => {
     inputEl.current.focus();
   }, []);
 
+  const Schema = Yup.object().shape({
+    name: Yup.string()
+      .required("Required")
+      .test("repeat", () => isUnique(channelsName, formik.values.name)),
+  });
+
+  useEffect(() => {
+    inputEl.current.focus();
+  }, []);
+
+  const formik = useFormik({
+    initialValues: {
+      name: name,
+    },
+    validationSchema: Schema,
+    onSubmit: (values) => {
+      console.log(values)
+      socket.emit("renameChannel", { name: values.name, id }, (response) => {
+        console.log(response.status)
+      });
+      onHide();
+    },
+  });
+
   return (
     <Modal show centered>
       <ModalHeader onHide={onHide} headerTitle="Переименовать канал" />
       <Modal.Body>
-        <form className="">
+        <form className="" onSubmit={formik.handleSubmit}>
           <FormGroup>
             <FormControl
               ref={inputEl}
               name="name"
               id="name"
               className="mb-2"
-              value="new channel"
+              value={formik.values.name}
+              onChange={formik.handleChange}
             />
 
             <div className="invalid-feedback" style={{ display: "block" }}>
-              {/* {formik.errors.name ? formik.errors.name : null} */}
+              {formik.errors.name ? formik.errors.name : null}
             </div>
             <div className="d-flex justify-content-end">
               <Button
@@ -34,7 +68,7 @@ const Rename = ({ onHide }) => {
               >
                 Отменить
               </Button>
-              <Button type="submit" className="btn btn-primary">
+              <Button type="submit" className="btn btn-primary" disabled={formik.values.name === ''}>
                 Отправить
               </Button>
             </div>

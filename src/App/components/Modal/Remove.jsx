@@ -20,7 +20,7 @@ const Remove = ({ onHide }) => {
       <Modal.Body>
         <p className="lead">Уверены?</p>
         <div className="d-flex justify-content-end">
-          <button type="button" className="me-2 btn btn-secondary" onHide={onHide}>
+          <button type="button" className="me-2 btn btn-secondary" onClick={onHide}>
             Отменить
           </button>
           <button type="button" className="btn btn-danger" onClick={onRemove}>
@@ -28,7 +28,7 @@ const Remove = ({ onHide }) => {
           </button>
         </div>
       </Modal.Body>
-    </Modal>
+    </Modal >
   );
 };
 

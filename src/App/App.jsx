@@ -14,7 +14,7 @@ import SignUp from './components/SignUp/SignUp.jsx';
 
 const App = () => {
   const modalName = useSelector((state) => state.modal.status)
-  console.log(modalName);
+
   return (
     <SocketProvider>
       <AuthProvider>

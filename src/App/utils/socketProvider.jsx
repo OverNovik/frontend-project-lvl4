@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import SocketContext from "./contexts/socketContext.js";
 import { useDispatch } from "react-redux";
 import { addMessage } from '../slices/messagesSlices.js';
-import { addChannel, removeChannel, setCurrentChannelId } from '../slices/channelsSlices.js';
+import { addChannel, removeChannel, renameChannel, setCurrentChannelId } from '../slices/channelsSlices.js';
 
 const SocketProvider = ({ children }) => {
   const socket = io();
@@ -20,6 +20,10 @@ const SocketProvider = ({ children }) => {
 
   socket.on("removeChannel", (channel) => {
     dispatch(removeChannel(channel.id));
+  })
+
+  socket.on("renameChannel", (channel) => {
+    dispatch(renameChannel(channel));
   })
 
   return (
