@@ -10,16 +10,19 @@ const Channels = () => {
     <div className="col-4 col-md-2 border-end pt-5 px-0 bg-light">
       <ChanelCreate />
       <ul className="nav flex-column nav-pills nav-fill px-2">
-        {
-          channels ? channels.map((item) => (
-            <ChanelItem key={item.id} name={item.name} />
+        {channels
+          ? channels.map((item) => (
+            <ChanelItem
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              removable={item.removable}
+            />
           ))
-            :
-            null
-        }
+          : null}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Channels;

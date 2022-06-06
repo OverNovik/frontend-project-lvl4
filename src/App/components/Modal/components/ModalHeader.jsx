@@ -1,11 +1,11 @@
 import React from "react";
+import { Modal } from "react-bootstrap";
 
-const ModalHeader = () => {
+const ModalHeader = ({ onHide, headerTitle }) => {
   return (
-    <div className="modal-header">
-      <div className="modal-title h4">Добавить канал</div>
-      <button type="button" aria-label="Close" data-bs-dismiss="modal" className="btn btn-close"></button>
-    </div>
+    <Modal.Header closeButton onHide={onHide}>
+      <Modal.Title className="modal-title h4">{headerTitle}</Modal.Title>
+    </Modal.Header>
   )
 }
 

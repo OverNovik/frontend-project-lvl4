@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
-import loginImage from './../../../../assets/loginImage.jpg';
+import loginImage from '../../../../assets/loginImage.jpg';
 import useAuth from '../../../../utils/hooks/useAuth.jsx';
 import { useNavigate } from 'react-router-dom';
 

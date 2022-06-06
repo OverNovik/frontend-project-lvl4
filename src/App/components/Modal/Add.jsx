@@ -1,20 +1,17 @@
 import React from "react";
+import { Modal } from "react-bootstrap";
 import ModalForm from "./components/ModalForm.jsx";
 import ModalHeader from "./components/ModalHeader.jsx";
 
-const Add = () => {
+const Add = ({ onHide }) => {
   return (
-    <div role="dialog" aria-modal="true" className="fade modal show" tabIndex="-1" style={{ display: "block", background: "gray", opacity: "0.7" }}>
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content" style={{ zIndex: "1000" }}>
-          <ModalHeader />
-          <div className="modal-body">
-            <ModalForm />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <Modal show centered>
+      <ModalHeader onHide={onHide} headerTitle="Добавить канал" />
+      <Modal.Body>
+        <ModalForm onHide={onHide} />
+      </Modal.Body>
+    </Modal>
+  );
+};
 
 export default Add;

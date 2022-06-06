@@ -8,10 +8,10 @@ const ChatFieldForm = () => {
   const { socket } = useSocket();
   const channelId = useSelector((state) => state.channels.currentChannelId);
   const token = JSON.parse(localStorageService.getToken());
-  const focusEl = useRef();
+  const inputEl = useRef();
 
   useEffect(() => {
-    focusEl.current.focus()
+    inputEl.current.focus()
   }, [])
 
   const formik = useFormik({
@@ -22,11 +22,13 @@ const ChatFieldForm = () => {
       const newMessage = {
         username: token.username,
         text: values.body,
-        id: channelId,
+        channelId: channelId,
       };
-      socket.emit('newMessage', newMessage);
-      console.log(newMessage)
-      actions.resetForm();
+      socket.emit('newMessage', newMessage, () => {
+        actions.resetForm();
+        inputEl.current.focus();
+      });
+      console.log(values)
     }
   })
 
@@ -35,7 +37,7 @@ const ChatFieldForm = () => {
       <form className="py-1 border rounded-2" onSubmit={formik.handleSubmit}>
         <div className="input-group has-validation">
           <input
-            ref={focusEl}
+            ref={inputEl}
             name="body"
             aria-label="Новое сообщение"
             placeholder="Введите сообщение..."

@@ -8,6 +8,7 @@ import 'regenerator-runtime/runtime.js';
 import store from './App/slices/index.js';
 import '../assets/application.scss';
 import App from './App/App.jsx';
+import { io } from 'socket.io-client';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -19,4 +20,7 @@ ReactDOM.render(
   </Provider>,
   document.querySelector('#chat')
 )
+
+
+
 

@@ -23,8 +23,8 @@ const Chat = () => {
       console.log(res.data)
       batch(() => {
         dispatch(getChannels(channels))
-        dispatch(getMessages(messages))
         dispatch(setCurrentChannelId(currentChannelId))
+        dispatch(getMessages(messages))
       })
     };
 

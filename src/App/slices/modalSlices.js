@@ -4,10 +4,13 @@ const modalSlices = createSlice({
   name: 'modal',
   initialState: {},
   reducers: {
-    temporary: (state) => {
-      console.log(state);
+    changeStatus: (state, { payload: status }) => {
+      state.status = status;
+    },
+    updateItem: (state, { payload: item }) => {
+      state.item = item;
     }
   }
 })
-export const { temporary } = modalSlices.actions;
+export const { changeStatus, updateItem } = modalSlices.actions;
 export default modalSlices.reducer;
