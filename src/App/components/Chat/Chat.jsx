@@ -1,14 +1,14 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { batch, useDispatch } from "react-redux";
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { batch, useDispatch } from 'react-redux';
 import {
   getChannels,
   setCurrentChannelId,
-} from "../../slices/channelsSlices.js";
-import Channels from "./components/Channels/Channels.jsx";
-import ChatField from "./components/СhatField/ChatField.jsx";
-import useAuth from "../../utils/hooks/useAuth.jsx";
-import { getMessages } from "../../slices/messagesSlices.js";
+} from '../../slices/channelsSlices.js';
+import Channels from './components/Channels/Channels.jsx';
+import ChatField from './components/СhatField/ChatField.jsx';
+import useAuth from '../../utils/hooks/useAuth.jsx';
+import { getMessages } from '../../slices/messagesSlices.js';
 
 const Chat = () => {
   const auth = useAuth();
@@ -17,7 +17,7 @@ const Chat = () => {
   useEffect(() => {
     const fetch = async () => {
       const data = JSON.parse(auth.token);
-      const res = await axios.get("/api/v1/data", {
+      const res = await axios.get('/api/v1/data', {
         headers: {
           Authorization: `Bearer ${data.token}`,
         },

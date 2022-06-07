@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import AuthContext from "./contexts/authContext.js";
-import localStorageService from "./localStorageService.js";
+/* eslint-disable no-shadow */
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useState } from 'react';
+import AuthContext from './contexts/authContext.js';
+import localStorageService from './localStorageService.js';
 
 const AuthProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -22,7 +24,10 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ loggedIn, logIn, logOut, token }}>
+    <AuthContext.Provider value={{
+      loggedIn, logIn, logOut, token,
+    }}
+    >
       {children}
     </AuthContext.Provider>
   );

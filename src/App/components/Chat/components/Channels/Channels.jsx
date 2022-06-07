@@ -1,7 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import ChanelCreate from "./ChanelCreate/ChanelCreate.jsx";
-import ChanelItem from "./ChanelItem/ChanelItem.jsx";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import ChanelCreate from './ChanelCreate/ChanelCreate.jsx';
+import ChanelItem from './ChanelItem/ChanelItem.jsx';
 
 const Channels = () => {
   const channels = useSelector((state) => state.channels.channels);

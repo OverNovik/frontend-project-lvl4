@@ -1,9 +1,9 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import Add from "./Add.jsx";
-import Remove from "./Remove.jsx";
-import Rename from "./Rename.jsx";
-import { changeStatus } from "../../slices/modalSlices.js";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import Add from './Add.jsx';
+import Remove from './Remove.jsx';
+import Rename from './Rename.jsx';
+import { changeStatus } from '../../slices/modalSlices.js';
 
 const modals = {
   adding: Add,

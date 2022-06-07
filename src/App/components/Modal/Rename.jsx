@@ -1,13 +1,15 @@
-import React, { useRef, useEffect } from "react";
-import * as Yup from "yup";
-import { Modal, Button, FormControl, FormGroup } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import ModalHeader from "./components/ModalHeader.jsx";
-import { useFormik } from "formik";
-import useSocket from "../../utils/hooks/useSocket.jsx";
-import { isUnique } from "../../utils/isUnique.js";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import React, { useRef, useEffect } from 'react';
+import * as Yup from 'yup';
+import {
+  Modal, Button, FormControl, FormGroup,
+} from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import ModalHeader from './components/ModalHeader.jsx';
+import useSocket from '../../utils/hooks/useSocket.jsx';
+import isUnique from '../../utils/isUnique.js';
 
 const Rename = ({ onHide }) => {
   const { socket } = useSocket();
@@ -23,8 +25,9 @@ const Rename = ({ onHide }) => {
 
   const Schema = Yup.object().shape({
     name: Yup.string()
-      .required("Required")
-      .test("repeat", () => isUnique(channelsName, formik.values.name)),
+      .required('Required')
+      // eslint-disable-next-line no-use-before-define
+      .test('repeat', () => isUnique(channelsName, formik.values.name)),
   });
 
   useEffect(() => {
@@ -33,15 +36,15 @@ const Rename = ({ onHide }) => {
 
   const formik = useFormik({
     initialValues: {
-      name: name,
+      name,
     },
     validationSchema: Schema,
     onSubmit: (values) => {
-      socket.emit("renameChannel", { name: values.name, id }, (response) => {
+      socket.emit('renameChannel', { name: values.name, id }, (response) => {
         console.log(response.status);
       });
       onHide();
-      toast.success(t("notify.channelRenamed"));
+      toast.success(t('notify.channelRenamed'));
     },
   });
 
@@ -49,7 +52,7 @@ const Rename = ({ onHide }) => {
     <Modal show centered>
       <ModalHeader
         onHide={onHide}
-        headerTitle={t("modals.titles.renameChannel")}
+        headerTitle={t('modals.titles.renameChannel')}
       />
       <Modal.Body>
         <form className="" onSubmit={formik.handleSubmit}>
@@ -63,7 +66,7 @@ const Rename = ({ onHide }) => {
               onChange={formik.handleChange}
             />
 
-            <div className="invalid-feedback" style={{ display: "block" }}>
+            <div className="invalid-feedback" style={{ display: 'block' }}>
               {formik.errors.name ? formik.errors.name : null}
             </div>
             <div className="d-flex justify-content-end">
@@ -72,14 +75,14 @@ const Rename = ({ onHide }) => {
                 type="button"
                 className="me-2 btn btn-secondary"
               >
-                {t("buttons.cancel")}
+                {t('buttons.cancel')}
               </Button>
               <Button
                 type="submit"
                 className="btn btn-primary"
-                disabled={formik.values.name === ""}
+                disabled={formik.values.name === ''}
               >
-                {t("buttons.send")}
+                {t('buttons.send')}
               </Button>
             </div>
           </FormGroup>

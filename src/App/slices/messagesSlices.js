@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
 const messagesSlices = createSlice({
-  name: "messages",
+  name: 'messages',
   initialState: {},
   reducers: {
     getMessages: (state, { payload: messages }) => {

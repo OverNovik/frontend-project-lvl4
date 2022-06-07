@@ -1,12 +1,12 @@
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import React, { useEffect, useRef } from "react";
-import { Button, FormControl, FormGroup } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import useSocket from "../../../utils/hooks/useSocket.jsx";
-import { isUnique } from "../../../utils/isUnique.js";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import React, { useEffect, useRef } from 'react';
+import { Button, FormControl, FormGroup } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import useSocket from '../../../utils/hooks/useSocket.jsx';
+import isUnique from '../../../utils/isUnique.js';
 
 const ModalForm = ({ onHide }) => {
   const { socket } = useSocket();
@@ -17,8 +17,9 @@ const ModalForm = ({ onHide }) => {
 
   const Schema = Yup.object().shape({
     name: Yup.string()
-      .required("Required")
-      .test("repeat", () => isUnique(channelsName, formik.values.name)),
+      .required('Required')
+      // eslint-disable-next-line no-use-before-define
+      .test('repeat', () => isUnique(channelsName, formik.values.name)),
   });
 
   useEffect(() => {
@@ -27,47 +28,45 @@ const ModalForm = ({ onHide }) => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      name: '',
     },
     validationSchema: Schema,
     onSubmit: (values) => {
-      socket.emit("newChannel", values);
+      socket.emit('newChannel', values);
       onHide();
-      toast.success(t("notify.channelCreated"));
+      toast.success(t('notify.channelCreated'));
     },
   });
 
   return (
-    <>
-      <form className="" onSubmit={formik.handleSubmit}>
-        <FormGroup>
-          <FormControl
-            ref={inputEl}
-            name="name"
-            id="name"
-            className="mb-2"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-          />
+    <form className="" onSubmit={formik.handleSubmit}>
+      <FormGroup>
+        <FormControl
+          ref={inputEl}
+          name="name"
+          id="name"
+          className="mb-2"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+        />
 
-          <div className="invalid-feedback" style={{ display: "block" }}>
-            {formik.errors.name ? formik.errors.name : null}
-          </div>
-          <div className="d-flex justify-content-end">
-            <Button
-              onClick={onHide}
-              type="button"
-              className="me-2 btn btn-secondary"
-            >
-              {t("buttons.cancel")}
-            </Button>
-            <Button type="submit" className="btn btn-primary">
-              {t("buttons.send")}
-            </Button>
-          </div>
-        </FormGroup>
-      </form>
-    </>
+        <div className="invalid-feedback" style={{ display: 'block' }}>
+          {formik.errors.name ? formik.errors.name : null}
+        </div>
+        <div className="d-flex justify-content-end">
+          <Button
+            onClick={onHide}
+            type="button"
+            className="me-2 btn btn-secondary"
+          >
+            {t('buttons.cancel')}
+          </Button>
+          <Button type="submit" className="btn btn-primary">
+            {t('buttons.send')}
+          </Button>
+        </div>
+      </FormGroup>
+    </form>
   );
 };
 

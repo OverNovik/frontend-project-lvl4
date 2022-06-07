@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import ChatFieldForm from "./ChatFieldForm/ChatFieldForm.jsx";
-import ChatFieldHeader from "./ChatFieldHeader/ChatFieldHeader.jsx";
-import ChatFieldMessage from "./ChatFieldMessage/ChatFieldMessage.jsx";
+import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import ChatFieldForm from './ChatFieldForm/ChatFieldForm.jsx';
+import ChatFieldHeader from './ChatFieldHeader/ChatFieldHeader.jsx';
+import ChatFieldMessage from './ChatFieldMessage/ChatFieldMessage.jsx';
 
 const ChatField = () => {
   const channelId = useSelector((state) => state.channels.currentChannelId);
@@ -23,16 +23,14 @@ const ChatField = () => {
           count={
             messages
               ? messages.filter((item) => item.channelId === channelId).length
-              : ""
+              : ''
           }
         />
         <div id="messages-box" className="chat-messages overflow-auto px-5 ">
           {messages
             ? messages
               .filter((item) => item.channelId === channelId)
-              .map((item) => {
-                return <ChatFieldMessage message={item} key={item.id} />;
-              })
+              .map((item) => <ChatFieldMessage message={item} key={item.id} />)
             : null}
           <div ref={divEl} />
         </div>

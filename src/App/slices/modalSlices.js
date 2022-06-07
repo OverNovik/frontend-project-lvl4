@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
 const modalSlices = createSlice({
-  name: "modal",
+  name: 'modal',
   initialState: {},
   reducers: {
     changeStatus: (state, { payload: status }) => {
