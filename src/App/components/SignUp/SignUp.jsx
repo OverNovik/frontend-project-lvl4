@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import signupImage from "../../assets/signupImage.jpg";
 import * as Yup from "yup";
 import useAuth from "../../utils/hooks/useAuth.jsx";
@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const [errorMessage, setErrorMessage] = useState("");
   const auth = useAuth();
   const navigate = useNavigate();
   const inputEl = useRef();
