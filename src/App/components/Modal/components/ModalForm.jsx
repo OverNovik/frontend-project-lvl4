@@ -33,7 +33,7 @@ const ModalForm = ({ onHide }) => {
     onSubmit: (values) => {
       socket.emit("newChannel", values);
       onHide();
-      toast.success(t('notify.channelCreated'))
+      toast.success(t("notify.channelCreated"));
     },
   });
 
@@ -59,10 +59,10 @@ const ModalForm = ({ onHide }) => {
               type="button"
               className="me-2 btn btn-secondary"
             >
-              {t('buttons.cancel')}
+              {t("buttons.cancel")}
             </Button>
             <Button type="submit" className="btn btn-primary">
-              {t('buttons.send')}
+              {t("buttons.send")}
             </Button>
           </div>
         </FormGroup>

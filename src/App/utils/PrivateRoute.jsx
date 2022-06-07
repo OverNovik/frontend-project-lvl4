@@ -6,8 +6,10 @@ const PrivateRoute = ({ children }) => {
   const auth = useAuth();
   const location = useLocation();
 
-  return (
-    auth.loggedIn ? children : <Navigate to="/login" state={{ from: location }} />
+  return auth.loggedIn ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} />
   );
 };
 

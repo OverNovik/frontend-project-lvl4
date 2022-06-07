@@ -8,7 +8,10 @@ const Add = ({ onHide }) => {
   const { t } = useTranslation();
   return (
     <Modal show centered>
-      <ModalHeader onHide={onHide} headerTitle={t('modals.titles.addChannel')} />
+      <ModalHeader
+        onHide={onHide}
+        headerTitle={t("modals.titles.addChannel")}
+      />
       <Modal.Body>
         <ModalForm onHide={onHide} />
       </Modal.Body>

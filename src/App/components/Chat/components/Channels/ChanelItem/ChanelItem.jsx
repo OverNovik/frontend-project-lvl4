@@ -14,14 +14,14 @@ const ChanelItem = ({ name, removable, id }) => {
 
   const onRemove = () => {
     batch(() => {
-      dispatch(changeStatus('removing'));
+      dispatch(changeStatus("removing"));
       dispatch(updateItem({ name, id }));
     });
   };
 
   const onRename = () => {
     batch(() => {
-      dispatch(changeStatus('renaming'));
+      dispatch(changeStatus("renaming"));
       dispatch(updateItem({ name, id }));
     });
   };
@@ -54,14 +54,16 @@ const ChanelItem = ({ name, removable, id }) => {
               variant={`flex-grow-0 dropdown-toggle dropdown-toggle-split btn ${currentChannelId === id ? "btn-secondary" : ""
                 }`}
             >
-              <span className="visually-hidden">{t('channels.channelManagement')}</span>
+              <span className="visually-hidden">
+                {t("channels.channelManagement")}
+              </span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={onRemove}>
-                {t('buttons.remove')}
+                {t("buttons.remove")}
               </Dropdown.Item>
               <Dropdown.Item onClick={onRename}>
-                {t('buttons.rename')}
+                {t("buttons.rename")}
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

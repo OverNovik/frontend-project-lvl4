@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const modalSlices = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState: {},
   reducers: {
     changeStatus: (state, { payload: status }) => {
@@ -9,8 +9,8 @@ const modalSlices = createSlice({
     },
     updateItem: (state, { payload: item }) => {
       state.item = item;
-    }
-  }
-})
+    },
+  },
+});
 export const { changeStatus, updateItem } = modalSlices.actions;
 export default modalSlices.reducer;

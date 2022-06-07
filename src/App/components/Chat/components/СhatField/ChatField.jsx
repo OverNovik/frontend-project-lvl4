@@ -6,7 +6,7 @@ import ChatFieldMessage from "./ChatFieldMessage/ChatFieldMessage.jsx";
 
 const ChatField = () => {
   const channelId = useSelector((state) => state.channels.currentChannelId);
-  const messages = useSelector((state) => state.messages.messages)
+  const messages = useSelector((state) => state.messages.messages);
 
   const divEl = useRef();
 
@@ -14,22 +14,26 @@ const ChatField = () => {
     if (messages) {
       divEl.current.scrollIntoView();
     }
-  }, [messages, channelId])
+  }, [messages, channelId]);
 
   return (
     <div className="col p-0 h-100">
       <div className="d-flex flex-column h-100">
-        <ChatFieldHeader count={messages ? messages.filter((item) => item.channelId === channelId).length : ''} />
-        <div id="messages-box" className="chat-messages overflow-auto px-5 ">
-          {
-            messages ? (
-              messages
-                .filter((item) => item.channelId === channelId)
-                .map((item) => {
-                  return <ChatFieldMessage message={item} key={item.id} />
-                })
-            ) : null
+        <ChatFieldHeader
+          count={
+            messages
+              ? messages.filter((item) => item.channelId === channelId).length
+              : ""
           }
+        />
+        <div id="messages-box" className="chat-messages overflow-auto px-5 ">
+          {messages
+            ? messages
+              .filter((item) => item.channelId === channelId)
+              .map((item) => {
+                return <ChatFieldMessage message={item} key={item.id} />;
+              })
+            : null}
           <div ref={divEl} />
         </div>
         <div className="mt-auto px-5 py-3">
@@ -37,7 +41,7 @@ const ChatField = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ChatField;

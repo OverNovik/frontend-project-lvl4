@@ -14,10 +14,10 @@ const AuthProvider = ({ children }) => {
   const logIn = (token) => {
     localStorageService.setToken(token);
     setLoggedIn(true);
-  }
+  };
 
   const logOut = () => {
-    localStorageService.removeToken()
+    localStorageService.removeToken();
     setLoggedIn(false);
   };
 

@@ -37,18 +37,20 @@ const Rename = ({ onHide }) => {
     },
     validationSchema: Schema,
     onSubmit: (values) => {
-      console.log(values)
       socket.emit("renameChannel", { name: values.name, id }, (response) => {
-        console.log(response.status)
+        console.log(response.status);
       });
       onHide();
-      toast.success(t('notify.channelRenamed'))
+      toast.success(t("notify.channelRenamed"));
     },
   });
 
   return (
     <Modal show centered>
-      <ModalHeader onHide={onHide} headerTitle={t('modals.titles.renameChannel')} />
+      <ModalHeader
+        onHide={onHide}
+        headerTitle={t("modals.titles.renameChannel")}
+      />
       <Modal.Body>
         <form className="" onSubmit={formik.handleSubmit}>
           <FormGroup>
@@ -70,10 +72,14 @@ const Rename = ({ onHide }) => {
                 type="button"
                 className="me-2 btn btn-secondary"
               >
-                {t('buttons.cancel')}
+                {t("buttons.cancel")}
               </Button>
-              <Button type="submit" className="btn btn-primary" disabled={formik.values.name === ''}>
-                {t('buttons.send')}
+              <Button
+                type="submit"
+                className="btn btn-primary"
+                disabled={formik.values.name === ""}
+              >
+                {t("buttons.send")}
               </Button>
             </div>
           </FormGroup>

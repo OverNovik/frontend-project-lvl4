@@ -1,6 +1,6 @@
-import React from 'react';
-import LoginFooter from './components/LoginFooter/LoginFooter.jsx';
-import LoginForm from './components/LoginForm/LoginForm.jsx';
+import React from "react";
+import LoginFooter from "./components/LoginFooter/LoginFooter.jsx";
+import LoginForm from "./components/LoginForm/LoginForm.jsx";
 
 const Login = () => {
   return (
@@ -15,6 +15,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
