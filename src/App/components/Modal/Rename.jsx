@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import useSocket from "../../utils/hooks/useSocket.jsx";
 import { isUnique } from "../../utils/isUnique.js";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const Rename = ({ onHide }) => {
   const { socket } = useSocket();
@@ -41,6 +42,7 @@ const Rename = ({ onHide }) => {
         console.log(response.status)
       });
       onHide();
+      toast.success(t('notify.channelRenamed'))
     },
   });
 

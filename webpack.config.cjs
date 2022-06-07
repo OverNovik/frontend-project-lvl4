@@ -41,17 +41,17 @@ module.exports = {
           { loader: 'sass-loader' },
         ],
       },
-      // {
-      //   test: /\.(gif|svg|jpg|png|jpeg)$/,
-      //   loader: "file-loader",
-      // },
       {
         test: /\.(png|jpg|gif|jpeg)$/i,
         use:
         {
           loader: 'url-loader',
         }
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
 };

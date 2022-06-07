@@ -31,7 +31,6 @@ export default {
         usernameMax: 'Слишком длинное имя!',
         passwordMin: 'Слишком короткий пароль!',
         confirmPassword: 'Пароли должны совпадать!',
-        inValid: 'Пользователь уже существует',
       },
       placeholders: {
         username: 'От 3 до 20 символов',
@@ -61,6 +60,14 @@ export default {
         renameChannel: 'Переименовать канал',
       },
       sure: 'Уверены',
+    },
+    notify: {
+      channelCreated: 'Канал создан',
+      channelRemoved: 'Канал удален',
+      channelRenamed: 'Канал переименован',
+      errors: {
+        inValid: 'Пользователь уже существует',
+      }
     }
   }
 }

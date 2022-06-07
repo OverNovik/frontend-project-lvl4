@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import useSocket from "../../../utils/hooks/useSocket.jsx";
 import { isUnique } from "../../../utils/isUnique.js";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const ModalForm = ({ onHide }) => {
   const { socket } = useSocket();
@@ -32,6 +33,7 @@ const ModalForm = ({ onHide }) => {
     onSubmit: (values) => {
       socket.emit("newChannel", values);
       onHide();
+      toast.success(t('notify.channelCreated'))
     },
   });
 

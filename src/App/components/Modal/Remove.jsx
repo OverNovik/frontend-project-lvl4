@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import ModalHeader from "./components/ModalHeader.jsx";
 import useSocket from "../../utils/hooks/useSocket.jsx";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const Remove = ({ onHide }) => {
   const { socket } = useSocket();
@@ -14,6 +15,7 @@ const Remove = ({ onHide }) => {
   const onRemove = () => {
     socket.emit('removeChannel', currModal);
     onHide();
+    toast.success(t('notify.channelRemoved'))
   }
 
   return (

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -45,8 +46,7 @@ const SignUp = () => {
         navigate('/');
       } catch (e) {
         if (e.response.status === 409) {
-          e.message = t('signup.errors.inValid')
-          setErrorMessage(e.message);
+          toast.error(t('notify.errors.inValid'));
         }
       }
     }
@@ -78,7 +78,6 @@ const SignUp = () => {
                   <label className="form-label" htmlFor="username">
                     {t('signup.labels.username')}
                   </label>
-                  {errorMessage ? <div placement="right" className="invalid-tooltip">{errorMessage}</div> : null}
                   {formik.errors.username ? <div placement="right" className="invalid-tooltip">{formik.errors.username}</div> : null}
                 </div>
                 <div className="form-floating mb-3">
