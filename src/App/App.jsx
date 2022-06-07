@@ -14,41 +14,54 @@ import { I18nextProvider } from 'react-i18next';
 import i18nextInstance from './locales/instance.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ErrorBoundary, Provider } from '@rollbar/react';
+
+const _rollbarConfig = {
+  accessToken: '092dd626bb30402a88242d36da5c0815',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  payload: {
+    environment: 'production',
+  },
+}
 
 const App = () => {
   const modalName = useSelector((state) => state.modal.status)
 
   return (
-
-    <I18nextProvider i18n={i18nextInstance}>
-      <SocketProvider>
-        <AuthProvider>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-          <div className="d-flex flex-column h-100">
-            <BrowserRouter>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
-                <Route path="/login" exact element={<Login />} />
-                <Route path="/NotFound" element={<NotFoundPage />} />
-                <Route path="/signup" element={<SignUp />} />
-              </Routes>
-            </BrowserRouter>
-            {renderModal(modalName)}
-          </div>
-        </AuthProvider>
-      </SocketProvider>
-    </I18nextProvider>
+    <Provider config={_rollbarConfig}>
+      <ErrorBoundary>
+        <I18nextProvider i18n={i18nextInstance}>
+          <SocketProvider>
+            <AuthProvider>
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+              <div className="d-flex flex-column h-100">
+                <BrowserRouter>
+                  <Navbar />
+                  <Routes>
+                    <Route path="/" element={<PrivateRoute><Chat /></PrivateRoute>} />
+                    <Route path="/login" exact element={<Login />} />
+                    <Route path="/NotFound" element={<NotFoundPage />} />
+                    <Route path="/signup" element={<SignUp />} />
+                  </Routes>
+                </BrowserRouter>
+                {renderModal(modalName)}
+              </div>
+            </AuthProvider>
+          </SocketProvider>
+        </I18nextProvider>
+      </ErrorBoundary>
+    </Provider>
   );
 }
 
