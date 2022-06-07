@@ -74,8 +74,7 @@ const SignUp = () => {
                     autoComplete="username"
                     required=""
                     id="username"
-                    className={`form-control${formik.errors.username ? ' is-invalid' : ''
-                      }`}
+                    className={`form-control${formik.errors.username ? ' is-invalid' : ''}`}
                     value={formik.values.username}
                     onChange={formik.handleChange}
                   />
@@ -97,8 +96,7 @@ const SignUp = () => {
                     autoComplete="new-password"
                     type="password"
                     id="password"
-                    className={`form-control${formik.errors.password ? ' is-invalid' : ''
-                      }`}
+                    className={`form-control${formik.errors.password ? ' is-invalid' : ''}`}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
@@ -119,8 +117,7 @@ const SignUp = () => {
                     autoComplete="new-password"
                     type="password"
                     id="confirmPassword"
-                    className={`form-control${formik.errors.confirmPassword ? ' is-invalid' : ''
-                      }`}
+                    className={`form-control${formik.errors.confirmPassword ? ' is-invalid' : ''}`}
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                   />
