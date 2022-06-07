@@ -18,7 +18,6 @@ module.exports = {
     compress: true,
     port: 8090,
     host: '0.0.0.0',
-    // publicPath: '/assets/',
     historyApiFallback: true,
   },
   devtool: 'inline-source-map',
