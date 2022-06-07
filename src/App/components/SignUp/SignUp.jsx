@@ -28,7 +28,7 @@ const SignUp = () => {
       .required(t('signup.errors.required')),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], t('signup.errors.confirmPassword'))
-      .required('Required'),
+      .required(t('signup.errors.required')),
   });
 
   const formik = useFormik({
@@ -75,7 +75,7 @@ const SignUp = () => {
                     required=""
                     id="username"
                     className={`form-control${formik.errors.username ? ' is-invalid' : ''
-                    }`}
+                      }`}
                     value={formik.values.username}
                     onChange={formik.handleChange}
                   />
@@ -98,7 +98,7 @@ const SignUp = () => {
                     type="password"
                     id="password"
                     className={`form-control${formik.errors.password ? ' is-invalid' : ''
-                    }`}
+                      }`}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
@@ -120,7 +120,7 @@ const SignUp = () => {
                     type="password"
                     id="confirmPassword"
                     className={`form-control${formik.errors.confirmPassword ? ' is-invalid' : ''
-                    }`}
+                      }`}
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                   />
