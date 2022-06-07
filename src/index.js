@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime.js';
 import store from './App/slices/index.js';
 import '../assets/application.scss';
 import App from './App/App.jsx';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';

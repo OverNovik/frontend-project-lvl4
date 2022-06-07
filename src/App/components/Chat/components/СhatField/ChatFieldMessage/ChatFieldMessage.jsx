@@ -1,4 +1,5 @@
 import React from "react";
+import filter from "leo-profanity";
 
 const ChatFieldMessage = ({ message }) => {
   return (
@@ -6,7 +7,7 @@ const ChatFieldMessage = ({ message }) => {
       <b>{message.username}</b>
       :
       {' '}
-      {message.text}
+      {filter.clean(message.text)}
     </div>
   )
 }
