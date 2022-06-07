@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 const ChatFieldHeader = ({ count }) => {
   const [title, setTitle] = useState('');
   const channels = useSelector((state) => state.channels.channels);
   const channelId = useSelector((state) => state.channels.currentChannelId);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (channels) {
@@ -19,7 +21,7 @@ const ChatFieldHeader = ({ count }) => {
       <p className="m-0">
         <b># {title}</b>
       </p>
-      <span className="text-muted">{count} сообщений</span>
+      <span className="text-muted">{count} {t('messages.countMessages')}</span>
     </div>
   )
 }

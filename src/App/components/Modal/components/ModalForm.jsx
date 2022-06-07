@@ -5,12 +5,14 @@ import { Button, FormControl, FormGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import useSocket from "../../../utils/hooks/useSocket.jsx";
 import { isUnique } from "../../../utils/isUnique.js";
+import { useTranslation } from "react-i18next";
 
 const ModalForm = ({ onHide }) => {
   const { socket } = useSocket();
   const inputEl = useRef();
   const channels = useSelector((state) => state.channels.channels);
   const channelsName = channels.map((item) => item.name);
+  const { t } = useTranslation();
 
   const Schema = Yup.object().shape({
     name: Yup.string()
@@ -55,10 +57,10 @@ const ModalForm = ({ onHide }) => {
               type="button"
               className="me-2 btn btn-secondary"
             >
-              Отменить
+              {t('buttons.cancel')}
             </Button>
             <Button type="submit" className="btn btn-primary">
-              Отправить
+              {t('buttons.send')}
             </Button>
           </div>
         </FormGroup>

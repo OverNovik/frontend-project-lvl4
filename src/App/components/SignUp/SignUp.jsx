@@ -5,12 +5,14 @@ import useAuth from "../../utils/hooks/useAuth.jsx";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const auth = useAuth();
   const navigate = useNavigate();
   const inputEl = useRef();
+  const { t } = useTranslation();
 
   useEffect(() => {
     inputEl.current.focus();
@@ -18,14 +20,14 @@ const SignUp = () => {
 
   const Schema = Yup.object().shape({
     username: Yup.string()
-      .min(3, 'Must be longer than 2 characters')
-      .max(20, 'Nice try, nobody has a user name that long')
-      .required('Required'),
+      .min(3, t('signup.errors.usernameMin'))
+      .max(20, t('signup.errors.usernameMax'))
+      .required(t('signup.errors.required')),
     password: Yup.string()
-      .min(6, 'Too Short password!')
-      .required('Required'),
+      .min(6, t('signup.errors.passwordMin'))
+      .required(t('signup.errors.required')),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], ('passwords do not match'))
+      .oneOf([Yup.ref('password'), null], t('signup.errors.confirmPassword'))
       .required('Required')
   })
 
@@ -40,11 +42,10 @@ const SignUp = () => {
       try {
         const res = await axios.post('api/v1/signup', values)
         auth.logIn(JSON.stringify(res.data));
-        console.log(res.data)
         navigate('/');
       } catch (e) {
         if (e.response.status === 409) {
-          e.message = 'Пользователь уже существует'
+          e.message = t('signup.errors.inValid')
           setErrorMessage(e.message);
         }
       }
@@ -58,66 +59,65 @@ const SignUp = () => {
           <div className="card shadow-sm">
             <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
               <div>
-                <img src={signupImage} className="rounded-circle" alt="Регистрация" />
+                <img src={signupImage} className="rounded-circle" alt={t('signup.title')} />
               </div>
               <form className="w-50" onSubmit={formik.handleSubmit}>
-                <h1 className="text-center mb-4">Регистрация</h1>
+                <h1 className="text-center mb-4">{t('signup.title')}</h1>
                 <div className="form-floating mb-3">
                   <input
                     ref={inputEl}
-                    placeholder="От 3 до 20 символов"
+                    placeholder={t('signup.placeholders.username')}
                     name="username"
                     autoComplete="username"
                     required=""
                     id="username"
-                    className="form-control is-invalid"
+                    className={`form-control${formik.errors.username ? ' is-invalid' : ''}`}
                     value={formik.values.username}
                     onChange={formik.handleChange}
                   />
                   <label className="form-label" htmlFor="username">
-                    Имя пользователя
+                    {t('signup.labels.username')}
                   </label>
-                  {/* <div placement="right" className="invalid-tooltip">
-                    Обязательное поле
-                  </div> */}
+                  {errorMessage ? <div placement="right" className="invalid-tooltip">{errorMessage}</div> : null}
+                  {formik.errors.username ? <div placement="right" className="invalid-tooltip">{formik.errors.username}</div> : null}
                 </div>
                 <div className="form-floating mb-3">
                   <input
-                    placeholder="Не менее 6 символов"
+                    placeholder={t('signup.placeholders.password')}
                     name="password"
                     aria-describedby="passwordHelpBlock"
                     required=""
                     autoComplete="new-password"
                     type="password"
                     id="password"
-                    className="form-control"
+                    className={`form-control${formik.errors.password ? ' is-invalid' : ''}`}
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
-                  <div className="invalid-tooltip">Обязательное поле</div>
+                  {formik.errors.password ? <div placement="right" className="invalid-tooltip">{formik.errors.password}</div> : null}
                   <label className="form-label" htmlFor="password">
-                    Пароль
+                    {t('signup.labels.password')}
                   </label>
                 </div>
                 <div className="form-floating mb-4">
                   <input
-                    placeholder="Пароли должны совпадать"
+                    placeholder={t('signup.placeholders.confirmPassword')}
                     name="confirmPassword"
                     required=""
                     autoComplete="new-password"
                     type="password"
                     id="confirmPassword"
-                    className="form-control"
+                    className={`form-control${formik.errors.confirmPassword ? ' is-invalid' : ''}`}
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                   />
-                  <div className="invalid-tooltip"></div>
+                  {formik.errors.confirmPassword ? <div placement="right" className="invalid-tooltip">{formik.errors.confirmPassword}</div> : null}
                   <label className="form-label" htmlFor="confirmPassword">
-                    Подтвердите пароль
+                    {t('signup.labels.confirmPassword')}
                   </label>
                 </div>
                 <button type="submit" className="w-100 btn btn-outline-primary">
-                  Зарегистрироваться
+                  {t('buttons.signup')}
                 </button>
               </form>
             </div>

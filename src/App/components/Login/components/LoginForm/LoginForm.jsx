@@ -14,7 +14,10 @@ const LoginForm = () => {
   const { t } = useTranslation();
 
   const Schema = Yup.object().shape({
-    username: Yup.string().required(t('login.errors.required')),
+    username: Yup.string()
+      .min(3, t('login.errors.usernameMin'))
+      .max(20, t('login.errors.usernameMax'))
+      .required(t('login.errors.required')),
     password: Yup.string()
       .min(2, t('login.errors.passwordMin'))
       .max(50, t('login.errors.passwordMax'))

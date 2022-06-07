@@ -6,13 +6,15 @@ import ModalHeader from "./components/ModalHeader.jsx";
 import { useFormik } from "formik";
 import useSocket from "../../utils/hooks/useSocket.jsx";
 import { isUnique } from "../../utils/isUnique.js";
+import { useTranslation } from "react-i18next";
 
 const Rename = ({ onHide }) => {
   const { socket } = useSocket();
   const inputEl = useRef();
   const channels = useSelector((state) => state.channels.channels);
   const channelsName = channels.map((item) => item.name);
-  const { id, name } = useSelector((state) => state.modal.item)
+  const { id, name } = useSelector((state) => state.modal.item);
+  const { t } = useTranslation();
 
   useEffect(() => {
     inputEl.current.focus();
@@ -44,7 +46,7 @@ const Rename = ({ onHide }) => {
 
   return (
     <Modal show centered>
-      <ModalHeader onHide={onHide} headerTitle="Переименовать канал" />
+      <ModalHeader onHide={onHide} headerTitle={t('modals.titles.renameChannel')} />
       <Modal.Body>
         <form className="" onSubmit={formik.handleSubmit}>
           <FormGroup>
@@ -66,10 +68,10 @@ const Rename = ({ onHide }) => {
                 type="button"
                 className="me-2 btn btn-secondary"
               >
-                Отменить
+                {t('buttons.cancel')}
               </Button>
               <Button type="submit" className="btn btn-primary" disabled={formik.values.name === ''}>
-                Отправить
+                {t('buttons.send')}
               </Button>
             </div>
           </FormGroup>

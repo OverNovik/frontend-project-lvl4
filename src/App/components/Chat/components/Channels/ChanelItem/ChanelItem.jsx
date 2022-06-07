@@ -1,5 +1,6 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { batch, useDispatch, useSelector } from "react-redux";
 import { setCurrentChannelId } from "../../../../../slices/channelsSlices.js";
 import { changeStatus, updateItem } from "../../../../../slices/modalSlices.js";
@@ -9,6 +10,7 @@ const ChanelItem = ({ name, removable, id }) => {
   const currentChannelId = useSelector(
     (state) => state.channels.currentChannelId
   );
+  const { t } = useTranslation();
 
   const onRemove = () => {
     batch(() => {
@@ -52,14 +54,14 @@ const ChanelItem = ({ name, removable, id }) => {
               variant={`flex-grow-0 dropdown-toggle dropdown-toggle-split btn ${currentChannelId === id ? "btn-secondary" : ""
                 }`}
             >
-              <span className="visually-hidden">Управление каналом</span>
+              <span className="visually-hidden">{t('channels.channelManagement')}</span>
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={onRemove}>
-                Удалить
+                {t('buttons.remove')}
               </Dropdown.Item>
               <Dropdown.Item onClick={onRename}>
-                Переименовать
+                {t('buttons.rename')}
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

@@ -1,14 +1,16 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { addChannel } from "../../../../../slices/channelsSlices.js";
 import { changeStatus } from "../../../../../slices/modalSlices.js";
 
 const ChanelCreate = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <div className="d-flex justify-content-between mb-2 ps-4 pe-2">
-      <span>Каналы</span>
+      <span>{t('channels.title')}</span>
       <button
         type="button"
         className="p-0 text-primary btn btn-group-vertical"
