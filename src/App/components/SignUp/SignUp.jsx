@@ -83,7 +83,7 @@ const SignUp = () => {
                     {t('signup.labels.username')}
                   </label>
                   {formik.errors.username ? (
-                    <div placement="right" className="invalid-tooltip">
+                    <div className="invalid-tooltip">
                       {formik.errors.username}
                     </div>
                   ) : null}
@@ -101,14 +101,14 @@ const SignUp = () => {
                     value={formik.values.password}
                     onChange={formik.handleChange}
                   />
-                  {formik.errors.password ? (
-                    <div placement="right" className="invalid-tooltip">
-                      {formik.errors.password}
-                    </div>
-                  ) : null}
                   <label className="form-label" htmlFor="password">
                     {t('signup.labels.password')}
                   </label>
+                  {formik.errors.password ? (
+                    <div className="invalid-tooltip">
+                      {formik.errors.password}
+                    </div>
+                  ) : null}
                 </div>
                 <div className="form-floating mb-4">
                   <input
@@ -122,14 +122,14 @@ const SignUp = () => {
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                   />
-                  {formik.errors.confirmPassword ? (
-                    <div placement="right" className="invalid-tooltip">
-                      {formik.errors.confirmPassword}
-                    </div>
-                  ) : null}
                   <label className="form-label" htmlFor="confirmPassword">
                     {t('signup.labels.confirmPassword')}
                   </label>
+                  {formik.errors.confirmPassword ? (
+                    <div className="invalid-tooltip">
+                      {formik.errors.confirmPassword}
+                    </div>
+                  ) : null}
                 </div>
                 <button type="submit" className="w-100 btn btn-outline-primary">
                   {t('buttons.signup')}
