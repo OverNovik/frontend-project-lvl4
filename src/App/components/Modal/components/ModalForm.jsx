@@ -52,9 +52,7 @@ const ModalForm = ({ onHide }) => {
         <label className="visually-hidden" htmlFor="name">
           {t('modals.nameChannel')}
         </label>
-        <div className="invalid-feedback" style={{ display: 'block' }}>
-          {formik.errors.name ? formik.errors.name : null}
-        </div>
+        {formik.errors.name ? <div className="invalid-feedback" style={{ display: 'block' }}>{formik.errors.name}</div> : null}
         <div className="d-flex justify-content-end">
           <Button
             onClick={onHide}

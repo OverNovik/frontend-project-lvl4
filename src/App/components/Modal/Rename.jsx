@@ -65,10 +65,10 @@ const Rename = ({ onHide }) => {
               value={formik.values.name}
               onChange={formik.handleChange}
             />
-
-            <div className="invalid-feedback" style={{ display: 'block' }}>
-              {formik.errors.name ? formik.errors.name : null}
-            </div>
+            <label className="visually-hidden" htmlFor="name">
+              {t('modals.nameChannel')}
+            </label>
+            {formik.errors.name ? <div className="invalid-feedback" style={{ display: 'block' }}>{formik.errors.name}</div> : null}
             <div className="d-flex justify-content-end">
               <Button
                 onClick={onHide}
