@@ -27,9 +27,9 @@ export default {
     signup: {
       errors: {
         required: 'Обязательное поле!',
-        usernameMin: 'Слишком короткое имя!',
-        usernameMax: 'Слишком длинное имя!',
-        passwordMin: 'Слишком короткий пароль!',
+        usernameMin: 'От 3 до 20 символов',
+        usernameMax: 'От 3 до 20 символов',
+        passwordMin: 'Не менее 6 символов',
         confirmPassword: 'Пароли должны совпадать!',
       },
       placeholders: {
