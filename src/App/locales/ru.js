@@ -11,12 +11,12 @@ export default {
     },
     login: {
       errors: {
-        usernameMin: 'Слишком короткое имя!',
-        usernameMax: 'Слишком длинное имя!',
-        passwordMin: 'Слишком короткий пароль!',
-        passwordMax: 'Слишком длинный пароль!',
-        required: 'Обязательное поле!',
-        inValid: 'Неправильное имя пользователя или пароль!',
+        usernameMin: 'Слишком короткое имя',
+        usernameMax: 'Слишком длинное имя',
+        passwordMin: 'Слишком короткий пароль',
+        passwordMax: 'Слишком длинный пароль',
+        required: 'Обязательное поле',
+        inValid: 'Неправильное имя пользователя или пароль',
       },
       username: 'Ваш ник',
       password: 'Пароль',
@@ -26,11 +26,11 @@ export default {
     },
     signup: {
       errors: {
-        required: 'Обязательное поле!',
+        required: 'Обязательное поле',
         usernameMin: 'От 3 до 20 символов',
         usernameMax: 'От 3 до 20 символов',
         passwordMin: 'Не менее 6 символов',
-        confirmPassword: 'Пароли должны совпадать!',
+        confirmPassword: 'Пароли должны совпадать',
       },
       placeholders: {
         username: 'От 3 до 20 символов',
