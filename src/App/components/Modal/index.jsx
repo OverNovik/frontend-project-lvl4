@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Add from './Add.jsx';
 import Remove from './Remove.jsx';
 import Rename from './Rename.jsx';
@@ -11,8 +11,9 @@ const modals = {
   renaming: Rename,
 };
 
-const renderModal = (modalName) => {
+const RenderModal = () => {
   const dispatch = useDispatch();
+  const modalName = useSelector((state) => state.modal.status);
 
   if (!modalName) {
     return null;
@@ -23,4 +24,4 @@ const renderModal = (modalName) => {
   return <Component onHide={() => dispatch(changeStatus(null))} />;
 };
 
-export default renderModal;
+export default RenderModal;

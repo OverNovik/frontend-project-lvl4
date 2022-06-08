@@ -13,7 +13,7 @@ const ChatFieldHeader = ({ count }) => {
       const currChannel = channels.find((item) => item.id === channelId);
       setTitle(currChannel.name);
     }
-  }, [channelId]);
+  }, [channels, channelId]);
 
   return (
     <div className="bg-light mb-4 p-3 shadow-sm small">
