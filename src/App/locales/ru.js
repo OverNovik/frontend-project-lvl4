@@ -56,6 +56,7 @@ export default {
         renameChannel: 'Переименовать канал',
       },
       sure: 'Уверены',
+      nameChannel: 'Имя канала',
     },
     notify: {
       channelCreated: 'Канал создан',
