@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import {
   Modal, Button, FormControl, FormGroup,
@@ -18,6 +18,7 @@ const Rename = ({ onHide }) => {
   const channelsName = channels.map((item) => item.name);
   const { id, name } = useSelector((state) => state.modal.item);
   const { t } = useTranslation();
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     inputEl.current.focus();
@@ -25,9 +26,7 @@ const Rename = ({ onHide }) => {
 
   const Schema = Yup.object().shape({
     name: Yup.string()
-      .required('Required')
-      // eslint-disable-next-line no-use-before-define
-      .test('repeat', () => isUnique(channelsName, formik.values.name)),
+      .required(t('modals.required')),
   });
 
   useEffect(() => {
@@ -40,11 +39,15 @@ const Rename = ({ onHide }) => {
     },
     validationSchema: Schema,
     onSubmit: (values) => {
-      socket.emit('renameChannel', { name: values.name, id }, (response) => {
-        console.log(response.status);
-      });
-      onHide();
-      toast.success(t('notify.channelRenamed'));
+      if (isUnique(channelsName, formik.values.name) === false) {
+        setErrorMessage(t('modals.unique'));
+      } else {
+        socket.emit('renameChannel', { name: values.name, id }, (response) => {
+          console.log(response.status);
+        });
+        onHide();
+        toast.success(t('notify.channelRenamed'));
+      }
     },
   });
 
@@ -59,7 +62,7 @@ const Rename = ({ onHide }) => {
           <FormGroup>
             <FormControl
               ref={inputEl}
-              name="rName"
+              name="name"
               id="rName"
               className="mb-2"
               value={formik.values.name}
@@ -68,7 +71,7 @@ const Rename = ({ onHide }) => {
             <label className="visually-hidden" htmlFor="rName">
               {t('modals.nameChannel')}
             </label>
-            {formik.errors.name ? <div className="invalid-feedback" style={{ display: 'block' }}>{formik.errors.name}</div> : null}
+            {errorMessage ? <div className="invalid-feedback" style={{ display: 'block' }}>{errorMessage}</div> : null}
             <div className="d-flex justify-content-end">
               <Button
                 onClick={onHide}

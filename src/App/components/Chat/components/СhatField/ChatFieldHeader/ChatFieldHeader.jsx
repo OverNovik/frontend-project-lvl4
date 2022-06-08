@@ -20,6 +20,7 @@ const ChatFieldHeader = ({ count }) => {
       <p className="m-0">
         <b>
           #
+          {' '}
           {title}
         </b>
       </p>

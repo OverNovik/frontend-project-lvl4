@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, FormControl, FormGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -14,12 +14,11 @@ const ModalForm = ({ onHide }) => {
   const channels = useSelector((state) => state.channels.channels);
   const channelsName = channels.map((item) => item.name);
   const { t } = useTranslation();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const Schema = Yup.object().shape({
     name: Yup.string()
-      .required('Required')
-      // eslint-disable-next-line no-use-before-define
-      .test('repeat', () => isUnique(channelsName, formik.values.name)),
+      .required(t('modals.required')),
   });
 
   useEffect(() => {
@@ -32,9 +31,13 @@ const ModalForm = ({ onHide }) => {
     },
     validationSchema: Schema,
     onSubmit: (values) => {
-      socket.emit('newChannel', values);
-      onHide();
-      toast.success(t('notify.channelCreated'));
+      if (isUnique(channelsName, formik.values.name) === false) {
+        setErrorMessage(t('modals.unique'));
+      } else {
+        socket.emit('newChannel', values);
+        onHide();
+        toast.success(t('notify.channelCreated'));
+      }
     },
   });
 
@@ -52,7 +55,7 @@ const ModalForm = ({ onHide }) => {
         <label className="visually-hidden" htmlFor="name">
           {t('modals.nameChannel')}
         </label>
-        {formik.errors.name ? <div className="invalid-feedback" style={{ display: 'block' }}>{formik.errors.name}</div> : null}
+        {errorMessage ? <div className="invalid-feedback" style={{ display: 'block' }}>{errorMessage}</div> : null}
         <div className="d-flex justify-content-end">
           <Button
             onClick={onHide}

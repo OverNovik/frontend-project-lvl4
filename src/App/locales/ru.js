@@ -55,8 +55,10 @@ export default {
         removeChannel: 'Удалить канал',
         renameChannel: 'Переименовать канал',
       },
+      required: 'Обязательное поле',
       sure: 'Уверены',
       nameChannel: 'Имя канала',
+      unique: 'Должно быть уникальным',
     },
     notify: {
       channelCreated: 'Канал создан',
