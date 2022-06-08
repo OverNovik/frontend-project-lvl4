@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React from 'react';
-import { io } from 'socket.io-client';
 import { useDispatch } from 'react-redux';
 import SocketContext from './contexts/socketContext.js';
 import { addMessage } from '../slices/messagesSlices.js';
@@ -11,8 +10,7 @@ import {
   setCurrentChannelId,
 } from '../slices/channelsSlices.js';
 
-const SocketProvider = ({ children }) => {
-  const socket = io();
+const SocketProvider = ({ children, socket }) => {
   const dispatch = useDispatch();
 
   socket.on('newMessage', (message) => {

@@ -11,10 +11,6 @@ export default {
     },
     login: {
       errors: {
-        usernameMin: 'Слишком короткое имя',
-        usernameMax: 'Слишком длинное имя',
-        passwordMin: 'Слишком короткий пароль',
-        passwordMax: 'Слишком длинный пароль',
         required: 'Обязательное поле',
         inValid: 'Неверные имя пользователя или пароль',
       },
