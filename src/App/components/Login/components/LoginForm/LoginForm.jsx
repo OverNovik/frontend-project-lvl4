@@ -15,12 +15,8 @@ const LoginForm = () => {
 
   const Schema = Yup.object().shape({
     username: Yup.string()
-      .min(3, t('login.errors.usernameMin'))
-      .max(20, t('login.errors.usernameMax'))
       .required(t('login.errors.required')),
     password: Yup.string()
-      .min(2, t('login.errors.passwordMin'))
-      .max(50, t('login.errors.passwordMax'))
       .required(t('login.errors.required')),
   });
 
@@ -64,8 +60,7 @@ const LoginForm = () => {
             required=""
             placeholder={t('login.username')}
             id="username"
-            className={`form-control ${formik.errors.username ? 'is-invalid' : null
-            }`}
+            className={`form-control ${formik.errors.username ? 'is-invalid' : null}`}
             value={formik.values.username}
             onChange={formik.handleChange}
           />
@@ -84,8 +79,7 @@ const LoginForm = () => {
             placeholder={t('login.password')}
             type="password"
             id="password"
-            className={`form-control ${formik.errors.password ? 'is-invalid' : null
-            }`}
+            className={`form-control ${formik.errors.password ? 'is-invalid' : null}`}
             value={formik.values.password}
             onChange={formik.handleChange}
           />
