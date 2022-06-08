@@ -62,7 +62,7 @@ export default {
     },
     notify: {
       channelCreated: 'Канал создан',
-      channelRemoved: 'Канал удален',
+      channelRemoved: 'Канал удалён',
       channelRenamed: 'Канал переименован',
       errors: {
         inValid: 'Пользователь уже существует',
