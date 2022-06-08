@@ -49,7 +49,9 @@ const ModalForm = ({ onHide }) => {
           value={formik.values.name}
           onChange={formik.handleChange}
         />
-
+        <label className="visually-hidden" htmlFor="name">
+          {t('modals.nameChannel')}
+        </label>
         <div className="invalid-feedback" style={{ display: 'block' }}>
           {formik.errors.name ? formik.errors.name : null}
         </div>
