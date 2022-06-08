@@ -59,13 +59,13 @@ const Rename = ({ onHide }) => {
           <FormGroup>
             <FormControl
               ref={inputEl}
-              name="name"
-              id="name"
+              name="rName"
+              id="rName"
               className="mb-2"
               value={formik.values.name}
               onChange={formik.handleChange}
             />
-            <label className="visually-hidden" htmlFor="name">
+            <label className="visually-hidden" htmlFor="rName">
               {t('modals.nameChannel')}
             </label>
             {formik.errors.name ? <div className="invalid-feedback" style={{ display: 'block' }}>{formik.errors.name}</div> : null}
