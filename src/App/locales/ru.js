@@ -67,6 +67,7 @@ export default {
       channelRenamed: 'Канал переименован',
       errors: {
         inValid: 'Пользователь уже существует',
+        network: 'Ошибка соединения',
       },
     },
   },

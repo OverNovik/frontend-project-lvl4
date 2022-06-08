@@ -47,6 +47,7 @@ const SignUp = () => {
         if (e.response.status === 409) {
           toast.error(t('notify.errors.inValid'));
         }
+        toast.error(t('notify.errors.network'));
       }
     },
   });
